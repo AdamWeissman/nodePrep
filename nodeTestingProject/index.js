@@ -29,7 +29,11 @@ const { lstat } = thatFileSystem.promises;
     for (let stats of allStats) {
       const index = allStats.indexOf(stats);
 
-      console.log(filenames[index], stats.isFile())
+      if (stats.isFile()) {
+        console.log(chalk.yellow("  " + filenames[index]))
+      } else {
+        console.log(chalk.yellow.bold(filenames[index]))
+      }
     }
 
 });
