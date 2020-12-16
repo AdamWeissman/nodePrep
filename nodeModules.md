@@ -1,6 +1,6 @@
 # IMPORTING AND EXPORTING
 
-for this example... inside of nodeTesting1/index.js  
+for these examples... inside of nodeTesting1/index.js  
    `const message = require('./myScript.js')`  
 AND... respectively... inside of nodeTesting1/index.js  
    `module.exports = helloMessage`  
@@ -27,3 +27,7 @@ The FIVE Arguements above:
   full path plus the file name
 * __dirname  
   full path of THEE file
+
+## REQUIREMENT CACHE
+Whatever gets required the first time around is what will be used.  
+can check what's being required by using `console.log(require.cache)`
