@@ -13,5 +13,5 @@ function(exports, require, module, __filename, __dirname) {
   const theMessage = require('./myscript.js);
 
   console.log(theMessage)
-```
 }
+```
