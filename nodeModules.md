@@ -1,13 +1,9 @@
 # IMPORTING AND EXPORTING
 
-for this example... inside of nodeTesting1/index.js
-
-`const message = require('./myScript.js')`
-
-AND... respectively... inside of nodeTesting1/index.js
-
-`module.exports = helloMessage`
-  
+for this example... inside of nodeTesting1/index.js  
+`const message = require('./myScript.js')`  
+AND... respectively... inside of nodeTesting1/index.js  
+`module.exports = helloMessage`  
 alternately, I could export an actual string instead of a variable
 
 ## BEHIND THE SCENES... THE ABOVE CODE REALLY DOES THIS:
@@ -21,6 +17,6 @@ function(exports, require, module, __filename, __dirname) {
 ```
 
 The FIVE Arguements above:
-<ol>exports</ol>
-<ol>exports</ol>
-<ol>exports</ol>
+   exports
+   exports
+   exports
