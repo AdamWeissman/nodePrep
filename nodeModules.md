@@ -18,12 +18,12 @@ function(exports, require, module, __filename, __dirname) {
 
 The FIVE Arguements above:
 -exports  
-functionally equivalnt to `module.exports` but `module.exports` is used more frequently because it's easier and satisfies an edge case
+  functionally equivalnt to `module.exports` but `module.exports` is used more frequently because it's easier and satisfies an edge case
 -require  
-a function that get access to the exports of another file
+  a function that get access to the exports of another file
 -module  
-an object that defines some properties and info about the current file
+  an object that defines some properties and info about the current file
 -__filename  
-full path plus the file name
+  full path plus the file name
 -__dirname  
-full path of THEE file
+  full path of THEE file
