@@ -12,3 +12,14 @@ Each file within Node is its own world, whereas with regular JavaScript, code ca
 Libraries in Node are included by using the Node Package Manager whereas for browser based JavaScript, you can use script tags etc.
 
 type `node` to enter the Node repl and explore!
+
+## DEBUGGING IN NODE
+* `node inspect index.js`  
+  this starts a debugger in the CLI and pauses execution whenever debugger is hit  
+
+  `c` continues execution, `n` runs the next line of code, `s` steps into a function, `o` steps out of current function
+*  `node --inspect index.js`  
+  starts a debugger instance and pauses execution when the `debugger` statement is hit... can access the debugger at 'chrome://inspect'
+
+*  `node --inspect-brk index.js`  
+  starts a debugger instance and WAITS to execute until a debugger is connected... also access it at 'chrome://inspect' 

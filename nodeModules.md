@@ -1,4 +1,6 @@
-# IMPORTING AND EXPORTING
+# RELATED EXAMPLES IN nodeTesting1
+
+## IMPORTING AND EXPORTING
 
 for these examples... inside of nodeTesting1/index.js  
    `const message = require('./myScript.js')`  
@@ -30,4 +32,4 @@ The FIVE Arguements above:
 
 ## REQUIREMENT CACHE
 Whatever gets required the first time around is what will be used.  
-can check what's being required by using `console.log(require.cache)`
+can check what's being required by using `console.log(require.cache)
