@@ -20,3 +20,5 @@ then run `npm link` and can run the file anywhere because of this:
     "gimmeDir": "index.js"
   }
 ```
+
+adding `npm install chalk` for colorization.  Notice how the package.json changed... and also how `node_modules` received a bunch of dependencies.

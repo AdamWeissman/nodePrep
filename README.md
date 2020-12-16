@@ -26,3 +26,7 @@ type `node` to enter the Node repl and explore!
 
 *  `node --inspect-brk index.js`
   starts a debugger instance and WAITS to execute until a debugger is connected... also access it at 'chrome://inspect' 
+
+# BONUS
+
+`which node` tells you the path of node
