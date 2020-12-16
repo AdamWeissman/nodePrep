@@ -19,6 +19,7 @@ The object is the same, though it is named differently...
 
 
 console.log("get counter", counterObj.getCounter())
+debugger;
 console.log("increment counter", counterObj.incrementCounter())
 console.log("get counter",counterObj.getCounter())
 

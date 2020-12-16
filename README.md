@@ -2,6 +2,9 @@
 
 This is a GitHub Repo to help learn and understand Node.js.  Whether it's your first time working with Node, or to serve as a refresher.  As I personally have only worked with Node.js on a tutorial project, this was created in the spirit of learning. --AW 12/16/2020
 
+FOR ANY READERS... I HIGHLY RECOMMEND THE FOLLOWING COURSE(S)  
+* https://www.udemy.com/share/102gjmB0Yed1lURH4=/
+
 ## KEY POINTS
 JavaScript is executed by adding script tags to an HTML Document whereas with Node, JS is executing by running the NODE CLI FROM THE TERMINAL.
 
@@ -17,9 +20,9 @@ type `node` to enter the Node repl and explore!
 * `node inspect index.js`  
   this starts a debugger in the CLI and pauses execution whenever debugger is hit  
 
-  `c` continues execution, `n` runs the next line of code, `s` steps into a function, `o` steps out of current function
+  `c` continues execution, `n` runs the next line of code, `s` steps into a function, `o` steps out of current function, `repl` starts an execution environment where we can test code
 *  `node --inspect index.js`  
   starts a debugger instance and pauses execution when the `debugger` statement is hit... can access the debugger at 'chrome://inspect'
 
-*  `node --inspect-brk index.js`  
+*  `node --inspect-brk index.js`
   starts a debugger instance and WAITS to execute until a debugger is connected... also access it at 'chrome://inspect' 
