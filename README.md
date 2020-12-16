@@ -10,3 +10,5 @@ There is no DOM, and therefore no access to any Window related objects.
 Each file within Node is its own world, whereas with regular JavaScript, code can reference variables in other files freely.
 
 Libraries in Node are included by using the Node Package Manager whereas for browser based JavaScript, you can use script tags etc.
+
+type `node` to enter the Node repl and explore!
