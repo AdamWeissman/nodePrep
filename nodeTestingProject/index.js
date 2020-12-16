@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const thatFileSystem = require('fs'); 
 // filesystem from node standard library is abbreviated
 // NOTE!!!  the above const is typically stores as fs instead of thatFileSystem, but for learning purposes I think it's more explicity/expressive to store it with a new name
