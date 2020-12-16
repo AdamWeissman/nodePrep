@@ -17,13 +17,13 @@ function(exports, require, module, __filename, __dirname) {
 ```
 
 The FIVE Arguements above:
--exports  
+* exports  
   functionally equivalnt to `module.exports` but `module.exports` is used more frequently because it's easier and satisfies an edge case
--require  
+* require  
   a function that get access to the exports of another file
--module  
+* module  
   an object that defines some properties and info about the current file
--__filename  
+* __filename  
   full path plus the file name
--__dirname  
+* __dirname  
   full path of THEE file
