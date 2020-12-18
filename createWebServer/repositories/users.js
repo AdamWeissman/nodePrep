@@ -28,8 +28,12 @@ class UsersRepository {
     const records = await this.getAll();
     records.push(attrs);
     
-    await fs.promises.writeFile(this.filename, JSON.stringify(records))
+    await this.writeAll(records)
+    
+  }
 
+  async writeAll(recs) {
+    await fs.promises.writeFile(this.filename, JSON.stringify(recs, null, 2)) // null is a custom formatter argument, and 2 designates how much indentation to use
   }
 
 }

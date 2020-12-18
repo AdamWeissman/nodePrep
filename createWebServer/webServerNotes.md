@@ -71,12 +71,41 @@ class UsersRepository {
     }
   }
 
-  async checkForFile() {
-
+  async getAll() {
+    return JSON.parse(
+      await fs.promises.readFile(this.filename, {
+        encoding: 'utf8'
+      })
+    );
   }
+
+  async create(attrs) {
+    const records = await this.getAll();
+    records.push(attrs);
+    
+    await this.writeAll(records)
+    
+  }
+
+  async writeAll(recs) {
+    await fs.promises.writeFile(
+      this.filename,
+      JSON.stringify(recs, null, 2)) 
+  }
+
 }
 
-const repo = new UsersRepository('users.json'); 
+onst test = async () => {
+  const repo = new UsersRepository('users.json'); 
+  
+  await repo.create({ email: 'test@test.com', pw: '1234', pwConfirm: '1234'})
+
+  const users = await repo.getAll()
+
+  console.log(users)
+}
+
+test()
 ```
 8) need to do `node users.js` from inside the repositories folder to generate a users.json
 

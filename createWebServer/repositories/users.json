@@ -1,1 +1,17 @@
-[{"email":"test@test.com","pw":"1234","pwConfirm":"1234"}]
+[
+  {
+    "email": "test@test.com",
+    "pw": "1234",
+    "pwConfirm": "1234"
+  },
+  {
+    "email": "test@test.com",
+    "pw": "1234",
+    "pwConfirm": "1234"
+  },
+  {
+    "email": "test@test.com",
+    "pw": "1234",
+    "pwConfirm": "1234"
+  }
+]
