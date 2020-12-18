@@ -56,22 +56,63 @@ class UsersRepository {
     await this.writeAll(filteredRecords)
   }
 
+  async update(id, attrs) {
+    const records = await this.getAll();
+    const record = records.find((record) => {return record.id === id})
 
+    if (!record) {
+      throw new Error('Record with id ${id} is not found')
+    } 
+    Object.assign(record, attrs); //takes attrs and copies them onto the record object
+    await this.writeAll(records) // record is now updated, so this.writeAll(records) sends to database
+  }
+
+  async getOneBy(filterObj) {
+    const records = await this.getAll();
+
+    for (let record of records) { //outer "for of" loop iterating through values in an array
+      let found = true;
+
+      for (let key in filterObj) { // inner "for in" loop iterating through the keys
+        if (record[key] !== filterObj[key]) {
+          found = false;
+        }
+      }
+
+      if (found) {
+        return record
+      }
+    }
+  }
 
 }
 
-const test = async () => {
-  const repo = new UsersRepository('users.json'); 
-  
+// const test = async () => {
+//   const repo = new UsersRepository('users.json'); 
   //await repo.create({ email: 'test@test.com', pw: '1234', pwConfirm: '1234'})
-
+  //await repo.update('6882f87c', { pw: '5678', pwConfirm: '5678'})
   //const users = await repo.getAll()
-
   //const user = await repo.getOne()
-
-  await repo.delete('6105d362')
-
+  //const user = await repo.getOneBy({ email: 'test@test.com', pw: '1234'})
+  //await repo.delete('6105d362')
   //console.log(user)
-}
+//}
+//test()
 
-test()
+
+
+//module.exports = UsersRepository
+
+//ANOTHER FILE would have to respond to the above with...
+
+// const UsersRepository = require('./users');
+// const repo = new UsersRepository('users.json')
+
+// INSTEAD, USE THE FOLLOWING
+
+module.exports = new UsersRepository('users.json')
+
+// ANOTHER FILE COULD THEN USE...
+// const repo = require('./users)
+// repo.getAll()
+// repo.getOne() etc...
