@@ -15,7 +15,7 @@ app.get('/', (request, response) => {
       <form method="POST">
         <input name="email" placeholder="email" /><br>
         <input name="pw" placeholder="password" /><br>
-        <input name="pwConfirmation" placeholder="confirm password" /><br>
+        <input name="pwConfirm" placeholder="confirm password" /><br>
         <button>SIGN UP</button
       </form>
     </div>
