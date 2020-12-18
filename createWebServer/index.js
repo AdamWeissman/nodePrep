@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express(); // this tells our webserver everything it can do
 const bodyParser = require('body-parser') // THIS IS TO REPLACE THE CUSTOM BODY PARSER WRITTEN BELOW
+const usersRepo = require('./repositories/users')
+
 app.use(bodyParser.urlencoded({ extended: true}));
+
 
 
 // ROUTE HANDLERS BELOW
@@ -23,7 +26,31 @@ app.get('/', (request, response) => {
   `)
 });
 
-// THE CODE BELOW IS REPLACED BY REQUIRE STATEMENT ABOVE
+app.post('/', async (request, response) => { //bodyParser is globally applied with app.use on line 4
+  const { email, pw, pwConfirm } = request.body
+  
+  const existingUser = await usersRepo.getOneBy( { email: email }); //can use  { email } instead because the name is the same as the value 
+  if (existingUser) {
+    return response.send('EMAIL IN USE');
+  }
+
+  if (pw !== pwConfirm) {
+    return response.send('PASSWORDS MUST MATCH');
+  }
+
+  response.send('ACCOUNT CREATED!')
+})
+
+
+app.listen(3000, () => {
+  console.log('Listening')
+})
+
+
+
+
+
+// THE CODE BELOW IS REPLACED BY REQUIRE STATEMENT AT THE TOP
 // const bodyParser = (request, response, next) => {
 //   if (request.method === 'POST') {
 //     request.on('data', data => {
@@ -46,14 +73,3 @@ app.get('/', (request, response) => {
 //   console.log(request.body)
 //   response.send('ACCOUNT CREATED!!!')
 // })
-
-app.post('/', (request, response) => { //bodyParser is globally applied with app.use on line 4
-  console.log(request.body)
-  response.send('ACCOUNT CREATED!!!')
-})
-
-
-app.listen(3000, () => {
-  console.log('Listening')
-})
-
