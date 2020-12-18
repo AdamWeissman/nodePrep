@@ -43,3 +43,41 @@ app.listen(3000, () => { // NOTE THAT 3000 could be whatever host you want
   const bodyParser = require('body-parser') // THIS IS TO REPLACE THE CUSTOM BODY PARSER WRITTEN BELOW
   app.use(bodyParser.urlencoded({ extended: true}));
 ```
+
+# DATA STORAGE NON-PRODUCTION GRADE, BUT ILLUSTRATIVE FOR CRUD
+
+### REPOSITORY APPROACH VS ACTIVE RECORD APPROACH...
+* REPOSITORY  
+  a single class( repo ) is responsible for data access, and all the records are stored/accessed as plain JS objects
+
+* "ACTIVE RECORD"  
+  every record is an instance of a 'model' class that has methods to save, update, delete (general CRUD etc)
+
+7) For quick testing (NOT FOR PRODUCTION) create a `repositories` folder and create an object... for example:  
+```
+const fs = require('fs')
+
+class UsersRepository {
+  constructor (filename) {
+    if (!filename) {
+      throw new Error('createing a repo requires a filename')
+    }
+
+    this.filename = filename
+    try {
+      fs.accessSync(this.filename)
+    } catch (err) {
+      fs.writeFileSync(this.filename, '[]')
+    }
+  }
+
+  async checkForFile() {
+
+  }
+}
+
+const repo = new UsersRepository('users.json'); 
+```
+8) need to do `node users.js` from inside the repositories folder to generate a users.json
+
+
