@@ -53,60 +53,7 @@ app.listen(3000, () => { // NOTE THAT 3000 could be whatever host you want
 * "ACTIVE RECORD"  
   every record is an instance of a 'model' class that has methods to save, update, delete (general CRUD etc)
 
-7) For quick testing (NOT FOR PRODUCTION) create a `repositories` folder and create an object... for example:  
-```
-const fs = require('fs')
-
-class UsersRepository {
-  constructor (filename) {
-    if (!filename) {
-      throw new Error('createing a repo requires a filename')
-    }
-
-    this.filename = filename
-    try {
-      fs.accessSync(this.filename)
-    } catch (err) {
-      fs.writeFileSync(this.filename, '[]')
-    }
-  }
-
-  async getAll() {
-    return JSON.parse(
-      await fs.promises.readFile(this.filename, {
-        encoding: 'utf8'
-      })
-    );
-  }
-
-  async create(attrs) {
-    const records = await this.getAll();
-    records.push(attrs);
-    
-    await this.writeAll(records)
-    
-  }
-
-  async writeAll(recs) {
-    await fs.promises.writeFile(
-      this.filename,
-      JSON.stringify(recs, null, 2)) 
-  }
-
-}
-
-onst test = async () => {
-  const repo = new UsersRepository('users.json'); 
-  
-  await repo.create({ email: 'test@test.com', pw: '1234', pwConfirm: '1234'})
-
-  const users = await repo.getAll()
-
-  console.log(users)
-}
-
-test()
-```
-8) need to do `node users.js` from inside the repositories folder to generate a users.json
+7) For quick testing (NOT FOR PRODUCTION) create a `repositories` folder and create an object... check out the repositories folder within this directory, the users.js file for a specific/comprehensive example.  
+  NOTE: need to do `node users.js` from inside the repositories folder to generate a users.json
 
 
