@@ -63,6 +63,12 @@ app.listen(3000, () => { // NOTE THAT 3000 could be whatever host you want
     * SIGN IN (get/post)
     * SIGN OUT (get)
 
-9) Make sure to both HASH and SALT the passwords
+9) Make sure to both HASH and SALT the passwords  
+  * check `./repositories/user.js`
+  * check `index.js` in this folder for more details
 
+10) Ultimately need to refactor all that's been done so far to include the following folders:  
+  - ROUTES  
+  - REPOSITORIES  
+  - VIEWS
 
