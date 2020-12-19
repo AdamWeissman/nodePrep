@@ -1,6 +1,9 @@
+const express = require('express')
+const usersRepo = require('../../repositories/users');
 
+const router = express.Router();
 
-app.get('/signup', (request, response) => {
+router.get('/signup', (request, response) => {
   response.send(`
   <br>
   <br>
@@ -19,7 +22,7 @@ app.get('/signup', (request, response) => {
   `)
 });
 
-app.post('/signup', async (request, response) => { //bodyParser is globally applied with app.use on line 4
+router.post('/signup', async (request, response) => { //bodyParser is globally applied with app.use on line 4
   const { email, pw, pwConfirm } = request.body
   
   const existingUser = await usersRepo.getOneBy( { email: email }); //can use  { email } instead because the name is the same as the value 
@@ -39,12 +42,12 @@ app.post('/signup', async (request, response) => { //bodyParser is globally appl
   response.send('ACCOUNT CREATED!')
 })
 
-app.get('/signout', (request, response) => {
+router.get('/signout', (request, response) => {
   request.session = null
   response.send("You are logged out");
 })
 
-app.get('/signin', async (request, response) => {
+router.get('/signin', async (request, response) => {
   response.send(`
   <br>
   <br>
@@ -62,7 +65,7 @@ app.get('/signin', async (request, response) => {
   `);
 })
 
-app.post('/signin', async (request, response) => {
+router.post('/signin', async (request, response) => {
   const { email, pw } = request.body; //LOVE THAT DESTRUCTURING!!
 
   const user = await usersRepo.getOneBy({ email })  // { email } is equivalent to { email: email}
@@ -83,3 +86,5 @@ app.post('/signin', async (request, response) => {
   request.session.someUserID = user.id;
   response.send("YOU ARE NOW LOGGED IN")
 });
+
+module.exports = router;
