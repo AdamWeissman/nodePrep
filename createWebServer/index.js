@@ -38,8 +38,15 @@ app.post('/', async (request, response) => { //bodyParser is globally applied wi
     return response.send('PASSWORDS MUST MATCH');
   }
 
+
+  const user = await usersRepo.create({ email, password});
+
+  
+
+
   response.send('ACCOUNT CREATED!')
 })
+
 
 
 app.listen(3000, () => {
