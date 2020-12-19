@@ -1,22 +1,17 @@
-const layout = require('../layout')
+const layout = require('../layout');
 
-module.exports = ( {requestObject} ) => {
+module.exports = ({ req }) => {
   return layout({
     content: `
-      <br>
-      <br>
-      <br>
-      <center>
-        <div>
-        YOUR ID IS: ${requestObject.session.someUserID}
-          <form method="POST">
-            <input name="email" placeholder="email" /><br>
-            <input name="pw" placeholder="password" /><br>
-            <input name="pwConfirm" placeholder="confirm password" /><br>
-            <button>SIGN UP</button
-          </form>
-        </div>
-      </center>
-      `
+    <div>
+      Your id is: ${req.session.userId}
+      <form method="POST">
+        <input name="email" placeholder="email" />
+        <input name="password" placeholder="password" />
+        <input name="passwordConfirmation" placeholder="password confirmation" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+  `
   });
 };

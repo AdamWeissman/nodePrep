@@ -77,5 +77,6 @@ PROJECT FOLDER
   } 
   ```
 
-5) REFACTOR router.post for form validation with express-validator  
-  - `npm install express-validator` 
+5) REFACTOR router.post signup form validation with express-validator  
+  - `npm install express-validator`  
+  - remember to sanitize THEN validate
