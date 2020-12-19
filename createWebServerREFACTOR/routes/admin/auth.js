@@ -1,6 +1,7 @@
 const express = require('express')
 const usersRepo = require('../../repositories/users');
 const signupTemplate = require('../../views/admin/auth/signup')
+const signinTemplate = require('../../views/admin/auth/signin')
 
 const router = express.Router();
 
@@ -33,22 +34,8 @@ router.get('/signout', (request, response) => {
   response.send("You are logged out");
 })
 
-router.get('/signin', async (request, response) => {
-  response.send(`
-  <br>
-  <br>
-  <br>
-  <center>
-    <div>
-    YOUR ID IS: ${request.session.someUserID}
-      <form method="POST">
-        <input name="email" placeholder="email" /><br>
-        <input name="pw" placeholder="password" /><br>
-        <button>SIGN IN</button
-      </form>
-    </div>
-  </center>
-  `);
+router.get('/signin', async (requestObject, response) => {
+  response.send(signinTemplate( {requestObject }));
 })
 
 router.post('/signin', async (request, response) => {
