@@ -49,6 +49,15 @@ class UsersRepository {
     
   }
 
+  async comparePasswords(saved, supplied) {
+
+    const [hashed, salt] = saved.split('.');
+    const hashedSupplied = await scrypt(supplied, salt, 64) // this returns the buffer/derived key
+    
+    return hashed === hashedSupplied.toString('hex') //hashed is more accurately described as a buffer
+  }
+
+
   async writeAll(recs) {
     await fs.promises.writeFile(this.filename, JSON.stringify(recs, null, 2)) // null is a custom formatter argument, and 2 designates how much indentation to use
   }
