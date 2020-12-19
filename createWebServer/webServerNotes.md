@@ -14,7 +14,7 @@
 
 ## WEB SERVER SETUP (cont'd from above...)
 
-5) The basic setup is like so... 
+5) The basic setup is like so...  check the repo folders for more details.
 ```
 const express = require('express');
 const app = express(); // this tells our webserver everything it can do
