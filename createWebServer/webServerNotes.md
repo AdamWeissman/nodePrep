@@ -63,4 +63,6 @@ app.listen(3000, () => { // NOTE THAT 3000 could be whatever host you want
     * SIGN IN (get/post)
     * SIGN OUT (get)
 
+9) Make sure to both HASH and SALT the passwords
+
 
