@@ -48,3 +48,15 @@ PROJECT FOLDER
     response.send(signupTemplate({ objectNeedsToBeSameAsThis })) // this must match above...
   });
   ```
+4) MAKE SURE TO USE A LAYOUT to wrap the other templates... for example:  
+  ```
+  const layout = require('../layout')
+
+  module.exports = ( {requestObject} ) => {
+  return layout({
+    content: `
+      <br>
+      <br>
+
+  etc etc...
+  ```
