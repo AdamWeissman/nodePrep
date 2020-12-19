@@ -1,20 +1,26 @@
 const express = require('express');
 const app = express(); // this tells our webserver everything it can do
 const bodyParser = require('body-parser') // THIS IS TO REPLACE THE CUSTOM BODY PARSER WRITTEN BELOW
-const usersRepo = require('./repositories/users')
+const cookieSession = require('cookie-session');
+const usersRepo = require('./repositories/users');
+const { request } = require('express');
 
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(cookieSession({
+  keys: ['zoP9sj55jJlJpP21zZzeE135'] // this is used for encryption
+}));
 
 
 
 // ROUTE HANDLERS BELOW
-app.get('/', (request, response) => {
+app.get('/signup', (request, response) => {
   response.send(`
   <br>
   <br>
   <br>
   <center>
     <div>
+    YOUR ID IS: ${request.session.someUserID}
       <form method="POST">
         <input name="email" placeholder="email" /><br>
         <input name="pw" placeholder="password" /><br>
@@ -26,7 +32,7 @@ app.get('/', (request, response) => {
   `)
 });
 
-app.post('/', async (request, response) => { //bodyParser is globally applied with app.use on line 4
+app.post('/signup', async (request, response) => { //bodyParser is globally applied with app.use on line 4
   const { email, pw, pwConfirm } = request.body
   
   const existingUser = await usersRepo.getOneBy( { email: email }); //can use  { email } instead because the name is the same as the value 
@@ -39,14 +45,52 @@ app.post('/', async (request, response) => { //bodyParser is globally applied wi
   }
 
 
-  const user = await usersRepo.create({ email, password});
+  const user = await usersRepo.create({ email, pw});
 
-  
-
+  request.session.someUserID = user.id // this added by the cookieSession
 
   response.send('ACCOUNT CREATED!')
 })
 
+app.get('/signout', (request, response) => {
+  request.session = null
+  response.send("You are logged out");
+})
+
+app.get('/signin', async (request, response) => {
+  response.send(`
+  <br>
+  <br>
+  <br>
+  <center>
+    <div>
+    YOUR ID IS: ${request.session.someUserID}
+      <form method="POST">
+        <input name="email" placeholder="email" /><br>
+        <input name="pw" placeholder="password" /><br>
+        <button>SIGN IN</button
+      </form>
+    </div>
+  </center>
+  `);
+})
+
+app.post('/signin', async (request, response) => {
+  const { email, pw } = request.body; //LOVE THAT DESTRUCTURING!!
+
+  const user = await usersRepo.getOneBy({ email })  // { email } is equivalent to { email: email}
+
+  if (!user) {
+    return response.send("EMAIL NOT FOUND")
+  } 
+
+  if (user.pw !== pw) {
+    return response.send('INVALID PASSWORD');
+  }
+
+  request.session.someUserID = user.id;
+  response.send("YOU ARE NOW LOGGED IN")
+});
 
 
 app.listen(3000, () => {

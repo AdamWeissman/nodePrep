@@ -56,4 +56,11 @@ app.listen(3000, () => { // NOTE THAT 3000 could be whatever host you want
 7) For quick testing (NOT FOR PRODUCTION) create a `repositories` folder and create an object... check out the repositories folder within this directory, the users.js file for a specific/comprehensive example.  
   NOTE: need to do `node users.js` from inside the repositories folder to generate a users.json
 
-8) Install a 3rd part package to manage cookies `npm install cookie-session`
+8) Install a 3rd party package to manage cookies `npm install cookie-session`  
+  set the cookie on the post request  
+  TIP: BE MINDFUL TO CREATE:  
+  * SIGN UP (get/post) 
+  * SIGN IN (get/post)
+  * SIGN OUT (get)
+
+
