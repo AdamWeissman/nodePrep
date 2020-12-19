@@ -58,10 +58,9 @@ app.listen(3000, () => { // NOTE THAT 3000 could be whatever host you want
 
 8) Install a 3rd party package to manage cookies `npm install cookie-session`  
   set the cookie on the post request  
-  
   TIP: BE MINDFUL TO CREATE:
-  * SIGN UP (get/post) 
-  * SIGN IN (get/post)
-  * SIGN OUT (get)
+    * SIGN UP (get/post) 
+    * SIGN IN (get/post)
+    * SIGN OUT (get)
 
 
