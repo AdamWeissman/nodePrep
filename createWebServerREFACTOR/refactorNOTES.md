@@ -48,6 +48,7 @@ PROJECT FOLDER
     response.send(signupTemplate({ objectNeedsToBeSameAsThis })) // this must match above...
   });
   ```
+  
 4) MAKE SURE TO USE A LAYOUT to wrap the other templates... for example:  
   ```
   const layout = require('../layout')
@@ -59,4 +60,22 @@ PROJECT FOLDER
       <br>
 
   etc etc...
+  ```  
+  THE ACTUAL LAYOUT WOULD BE SOMETHING LIKE THIS...  
   ```
+  module.exports = ( { content } ) => {
+  return `
+    <!DOCTYPE html>  
+      <html>
+        <head>
+        </head>
+          <body>
+            ${content}
+          </body>
+      </html>
+  `;
+  } 
+  ```
+
+5) REFACTOR router.post for form validation with express-validator  
+  - `npm install express-validator` 
