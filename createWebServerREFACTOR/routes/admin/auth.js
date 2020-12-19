@@ -1,25 +1,11 @@
 const express = require('express')
 const usersRepo = require('../../repositories/users');
+const signupTemplate = require('../../views/admin/auth/signup')
 
 const router = express.Router();
 
-router.get('/signup', (request, response) => {
-  response.send(`
-  <br>
-  <br>
-  <br>
-  <center>
-    <div>
-    YOUR ID IS: ${request.session.someUserID}
-      <form method="POST">
-        <input name="email" placeholder="email" /><br>
-        <input name="pw" placeholder="password" /><br>
-        <input name="pwConfirm" placeholder="confirm password" /><br>
-        <button>SIGN UP</button
-      </form>
-    </div>
-  </center>
-  `)
+router.get('/signup', (requestObject, response) => {
+  response.send(signupTemplate({ requestObject })) // request is actually the requestObject
 });
 
 router.post('/signup', async (request, response) => { //bodyParser is globally applied with app.use on line 4
