@@ -4,6 +4,7 @@ const { check, validationResult } = require('express-validator');
 const usersRepo = require('../../repositories/users');
 const signupTemplate = require('../../views/admin/auth/signup');
 const signinTemplate = require('../../views/admin/auth/signin');
+const { requireEmail } = require('./validators')
 
 const router = express.Router();
 
@@ -13,11 +14,9 @@ router.get('/signup', (req, res) => {
 
 router.post(
   '/signup',
-  [
-    check('email')
-      .trim()
-      .normalizeEmail()
-      .isEmail(),
+  [ 
+    requireEmail,
+    
     check('password')
       .trim()
       .isLength({ min: 4, max: 20 }),

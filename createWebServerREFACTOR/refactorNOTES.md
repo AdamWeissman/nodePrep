@@ -26,7 +26,7 @@ PROJECT FOLDER
   - replaced instances of `app.get` etc with `router.get`
 
 2) Inside of index.js...  
-  - `const authRouter = require('./routrs/admin/auth')`
+  - `const authRouter = require('./routers/admin/auth')`
   - `app.use(authRouter)` to gain access to the subroutes
   
 3) Create Some Basic HTML Templates in VIEWS ...  
@@ -80,3 +80,5 @@ PROJECT FOLDER
 5) REFACTOR router.post signup form validation with express-validator  
   - `npm install express-validator`  
   - remember to sanitize THEN validate
+  - extract validation to validators file for cleaner code (or start that way)
+
